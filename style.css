@@ -1,0 +1,671 @@
+<![CDATA[/*
+-----------------------------------------------
+Chuva de Aegyo [USO EXCLUSIVO]
+Feito por: Belle Santos
+URL: www.chuvadeaegyo.com.br
+----------------------------------------------- */
+
+/* Variable definitions
+   ====================
+   <Variable name="keycolor" description="Main Color" type="color" default="#539bcd" value="#ecb892"/>
+
+   <Group description="Page Text" selector="body">
+     <Variable name="body.font" description="Font" type="font"
+         default="normal normal 13px 'Trebuchet MS',Trebuchet,sans-serif" value="normal normal 13px &#39;Trebuchet MS&#39;,Trebuchet,sans-serif"/>
+     <Variable name="body.text.color" description="Text Color" type="color" default="#bbbbbb" value="#000000"/>
+   </Group>
+
+   <Group description="Backgrounds" selector=".body-fauxcolumns-outer">
+     <Variable name="body.background.color" description="Outer Background" type="color" default="#539bcd" value="#fff2fb"/>
+     <Variable name="content.background.color" description="Main Background" type="color" default="transparent" value="rgba(0, 0, 0, 0)"/>
+   </Group>
+
+   <Group description="Links" selector=".main-outer">
+     <Variable name="link.color" description="Link Color" type="color" default="#ff9900" value="#ff0066"/>
+     <Variable name="link.visited.color" description="Visited Color" type="color" default="#b87209" value="#ff0066"/>
+     <Variable name="link.hover.color" description="Hover Color" type="color" default="#ff9900" value="#000000"/>
+   </Group>
+
+   <Group description="Blog Title" selector=".header h1">
+     <Variable name="header.font" description="Font" type="font"
+         default="normal normal 60px 'Trebuchet MS',Trebuchet,sans-serif" value="normal normal 60px &#39;Trebuchet MS&#39;,Trebuchet,sans-serif"/>
+     <Variable name="header.text.color" description="Text Color" type="color" default="#ffffff"  value="#000000"/>
+   </Group>
+
+   <Group description="Blog Description" selector=".header .description">
+     <Variable name="description.text.color" description="Description Color" type="color"
+         default="$(body.text.color)"  value="#000000"/>
+   </Group>
+
+   <Group description="Tabs Text" selector=".tabs-inner .widget li a">
+     <Variable name="tabs.font" description="Font" type="font"
+         default="normal bold 16px 'Trebuchet MS',Trebuchet,sans-serif" value="normal normal 16px Verdana, Geneva, sans-serif"/>
+     <Variable name="tabs.text.color" description="Text Color" type="color" default="#ffffff" value="#ffffff"/>
+     <Variable name="tabs.selected.text.color" description="Selected Color" type="color" default="#ffffff" value="#ffffff"/>
+   </Group>
+
+   <Group description="Tabs Background" selector=".tabs-outer .PageList">
+     <Variable name="tabs.background.color" description="Background Color" type="color" default="transparent" value="#ff0066"/>
+     <Variable name="tabs.selected.background.color" description="Selected Color" type="color" default="transparent" value="#000000"/>
+   </Group>
+
+   <Group description="Date Header" selector=".main-inner h2.date-header">
+     <Variable name="date.font" description="Font" type="font"
+         default="normal normal 14px 'Trebuchet MS',Trebuchet,sans-serif" value="normal normal 14px &#39;Trebuchet MS&#39;,Trebuchet,sans-serif"/>
+     <Variable name="date.text.color" description="Text Color" type="color" default="$(body.text.color)" value="#666666"/>
+   </Group>
+
+   <Group description="Post Title" selector="h3.post-title a">
+     <Variable name="post.title.font" description="Font" type="font"
+         default="normal bold 20px 'Trebuchet MS',Trebuchet,sans-serif" value="normal bold 20px &#39;Trebuchet MS&#39;,Trebuchet,sans-serif"/>
+     <Variable name="post.title.text.color" description="Text Color" type="color"
+         default="#ffffff" value="#000000"/>
+   </Group>
+
+   <Group description="Post Background" selector=".column-center-inner">
+     <Variable name="post.background.color" description="Background Color" type="color"
+         default="transparent" value="#ffffff"/>
+     <Variable name="post.background.url" description="Post Background URL" type="url" default="none" value="none"/>
+   </Group>
+
+   <Group description="Gadget Title Color" selector="h2">
+     <Variable name="widget.title.font" description="Font" type="font"
+        default="normal bold 14px 'Trebuchet MS',Trebuchet,sans-serif" value="normal bold 14px &#39;Trebuchet MS&#39;,Trebuchet,sans-serif"/>
+     <Variable name="widget.title.text.color" description="Title Color" type="color" default="#ffffff" value="#444444"/>
+   </Group>
+
+   <Group description="Gadget Text" selector=".footer-inner .widget, .sidebar .widget">
+     <Variable name="widget.font" description="Font" type="font"
+        default="$(body.font)" value="normal normal 13px &#39;Trebuchet MS&#39;,Trebuchet,sans-serif"/>
+     <Variable name="widget.text.color" description="Text Color" type="color" default="$(body.text.color)" value="#000000"/>
+   </Group>
+
+   <Group description="Gadget Links" selector=".sidebar .widget">
+     <Variable name="widget.link.color" description="Link Color" type="color" default="$(body.text.color)" value="#ff0066"/>
+     <Variable name="widget.link.visited.color" description="Visited Color" type="color" default="$(link.visited.color)" value="#ff0066"/>
+     <Variable name="widget.alternate.text.color" description="Alternate Color" type="color" default="#ffffff" value="#000000"/>
+   </Group>
+
+   <Group description="Sidebar Background" selector=".column-left-inner .column-right-inner">
+     <Variable name="widget.outer.background.color" description="Background Color" type="color" default="transparent"  value="rgba(0, 0, 0, 0)"/>
+     <Variable name="widget.inner.background.color" description="Color de fundo do widget" type="color" default="transparent" value="#ffffff"/>
+     <Variable name="widget.border.bevel.color" description="Bevel Color" type="color" default="transparent"  value="#ff0066"/>
+   </Group>
+
+   <Variable name="body.background" description="Body Background" type="background"
+       color="$(body.background.color)" default="$(color) none repeat-x scroll top center" value="$(color) none no-repeat scroll center center"/>
+   <Variable name="content.background" description="Content Background" type="background"
+       color="$(content.background.color)" default="$(color) none repeat scroll top center" value="transparent none repeat-x scroll top center"/>
+   <Variable name="comments.background" description="Comments Background" type="background"
+       default="#cccccc none repeat scroll top center" value="#cccccc none repeat scroll top center"/>
+
+   <Variable name="content.imageBorder.top.space" description="Content Image Border Top Space" type="length" default="0" min="0" max="100px" value="0"/>
+   <Variable name="content.imageBorder.top" description="Content Image Border Top" type="url" default="none" value="none"/>
+
+   <Variable name="content.margin" description="Content Margin Top" type="length" default="20px" min="0" max="100px" value="0"/>
+   <Variable name="content.padding" description="Content Padding" type="length" default="20px" min="0" max="100px" value="30px"/>
+   <Variable name="content.posts.padding" description="Posts Content Padding" type="length" default="10px" min="0" max="100px" value="20px"/>
+
+   <Variable name="tabs.background.gradient" description="Tabs Background Gradient" type="url"
+       default="url(https://resources.blogblog.com/blogblog/data/1kt/travel/bg_black_50.png)" value="url(transparent)"/>
+   <Variable name="tabs.selected.background.gradient" description="Tabs Selected Background Gradient" type="url"
+       default="url(https://resources.blogblog.com/blogblog/data/1kt/travel/bg_black_50.png)" value="url(transparent)"/>
+   <Variable name="widget.outer.background.gradient" description="Sidebar Gradient" type="url"
+       default="url(https://resources.blogblog.com/blogblog/data/1kt/travel/bg_black_50.png)" value="url(transparent)"/>
+   <Variable name="footer.background.gradient" description="Footer Background Gradient" type="url" default="none" value="url(transparent)"/>
+   <Variable name="mobile.background.overlay" description="Mobile Background Overlay" type="string"
+       default="transparent none repeat scroll top left" value="transparent none repeat scroll top left"/>
+   <Variable name="mobile.button.color" description="Mobile Button Color" type="color" default="#ffffff"  value="#ffffff"/>
+   <Variable name="startSide" description="Side where text starts in blog language" type="automatic" default="left"/>
+   <Variable name="endSide" description="Side where text ends in blog language" type="automatic" default="right"/>
+
+  <Group description="Arquivo do blog" selector="body">
+    <Variable name="archive.background.color" description="Cor do fundo do arquivo" type="color" default="#ffffff" value="#f3f3f3"/>
+    <Variable name="archive.text.font" description="Fonte do arquivo" type="font" default="normal normal 13px 'Trebuchet MS',Trebuchet,sans-serif" value="normal normal 14px &#39;Arial&#39;,sans-serif"/>
+    <Variable name="archive.text.color" description="Cor do texto do arquivo" type="color" default="#000000" value="#000000"/>
+  </Group>
+
+  <Group description="Caixa de pesquisa" selector="body">
+    <Variable name="bsg.background.color" description="Cor do fundo da caixa de pesquisa" type="color" default="#ffffff" value="#ffffff"/>
+    <Variable name="bgs.text.font" description="Fonte da caixa de pesquisa" type="font" default="normal normal 13px 'Trebuchet MS',Trebuchet,sans-serif" value="normal normal 12px Josefin Sans"/>
+    <Variable name="bsg.text.color" description="Cor do texto da caixa de pesquisa" type="color" default="#000000" value="#444444"/>
+    <Variable name="bsg.background.color.hover" description="Cor do fundo da caixa de pesquisa selecionada" type="color" default="#ffffff" value="#ffffff"/>
+    <Variable name="bgs.text.font.hover" description="Fonte da caixa de pesquisa selecionada" type="font" default="normal normal 13px 'Trebuchet MS',Trebuchet,sans-serif" value="normal normal 12px Josefin Sans"/>
+    <Variable name="bsg.text.color.hover" description="Cor do texto da caixa de pesquisa selecionada" type="color" default="#000000" value="#444444"/>
+  </Group>
+
+  <Group description="Botão da caixa de pesquisa">
+    <Variable name="bsgbtn.background.color" description="Cor do fundo do botão" type="color" default="#ffffff" value="#ecb892"/>
+    <Variable name="bgsbtn.text.font" description="Fonte ddo botão" type="font" default="normal normal 13px 'Trebuchet MS',Trebuchet,sans-serif" value="normal normal 14px Arial, sans-serif"/>
+    <Variable name="bsgbtn.text.color" description="Cor do texto do botão" type="color" default="#000000" value="#000000"/>
+    <Variable name="bsgbtn.background.color.hover" description="Cor do fundo do botão selecionado" type="color" default="#ffffff" value="#ecb892"/>
+    <Variable name="bgsbtn.text.font.hover" description="Fonte ddo botão selecionado" type="font" default="normal normal 13px 'Trebuchet MS',Trebuchet,sans-serif" value="normal normal 14px Arial, sans-serif"/>
+    <Variable name="bsgbtn.text.color.hover" description="Cor do texto do botão selecionado" type="color" default="#000000" value="#000000"/>
+  </Group>
+
+*/
+
+/* Content
+----------------------------------------------- */
+body {
+  font: $(body.font);
+  color: $(body.text.color);
+  background: $(body.background);
+}
+
+html body .region-inner {
+  min-width: 0;
+  max-width: 100%;
+  width: auto;
+}
+
+a:link {
+  text-decoration: none;
+  color: $(link.color);
+}
+
+a:visited {
+  text-decoration: none;
+  color: $(link.visited.color);
+}
+
+a:hover {
+  text-decoration: none;
+  color: $(link.hover.color);
+}
+
+.content-outer .content-cap-top {
+  height: transparent;
+  background: transparent;
+}
+
+.content-outer {
+  margin: 0 auto;
+  padding-top: transparent;
+}
+
+.content-inner {
+  background: $(content.background);
+  background-position: left -$(content.imageBorder.top.space);
+  background-color: $(content.background.color);
+  padding: $(content.padding);
+}
+
+.main-inner .date-outer {
+  margin-bottom: 3em;
+  padding-top: 5px;
+  background-color: $(post.background.color);
+}
+
+
+/* Header
+----------------------------------------------- */
+.header-inner .Header .titlewrapper,
+.header-inner .Header .descriptionwrapper {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.Header h1 {
+  font: $(header.font);
+  color: $(header.text.color);
+}
+
+.Header h1 a {
+  color: $(header.text.color);
+}
+
+.Header .description {
+  font-size: 130%;
+}
+
+/* Blogsearch
+----------------------------------------------- */
+input.gsc-search-button {
+  margin: 0 !important;
+  font: $(bgsbtn.text.font);
+  color: $(bsgbtn.text.color);
+  padding: 6px 5px;
+  background: $(bsgbtn.background.color);
+  border: 1px solid #dddddd !important;
+}
+
+input.gsc-search-button:hover {
+  border: 1px solid #999;
+  background: $(bsgbtn.background.color.hover);
+  font: $(bgsbtn.text.font.hover);
+  color: $(bsgbtn.text.color.hover);
+}
+
+input.gsc-input{
+  float: right;
+  width: 200px !important;
+  height: 30px;
+  font: $(bgs.text.font);
+  color: $(bsg.text.color);
+  background: $(bsg.background.color);
+  border-bottom: 1px solid #dddddd !important;
+  padding: 4px 5px 4px 30px !important;
+}
+
+input.gsc-input:focus {
+  border: 1px solid #999999;
+  background: $(bsg.background.color.hover);
+  color: $(bsg.text.color.hover);
+  font: $(bgs.text.font.hover);
+}
+
+input.gsc-input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+input.gsc-input:focus:-moz-placeholder { /* Firefox 18- */
+  color: transparent;
+}
+input.gsc-input:focus::-moz-placeholder {  /* Firefox 19+ */
+  color: transparent;
+}
+input.gsc-input:focus:-ms-input-placeholder {  
+ color: transparent;
+}
+
+/* Tabs
+----------------------------------------------- */
+.fixatopo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.tabs-inner {
+  margin: 1em 0 0;
+  padding: 0;
+}
+
+.tabs-inner .section {
+  margin: 0;
+}
+
+.tabs-inner .widget ul {
+  padding: 0;
+  background: $(tabs.background.color) $(tabs.background.gradient) repeat scroll top center;
+}
+
+.tabs-inner .widget li {
+  border: none;
+}
+
+.tabs-inner .widget li a {
+  display: inline-block;
+  padding: 1em 1.5em;
+  color: $(tabs.text.color);
+  font: $(tabs.font);
+}
+
+.tabs-inner .widget li.selected a,
+.tabs-inner .widget li a:hover {
+  position: relative;
+  z-index: 1;
+  background: $(tabs.selected.background.color) $(tabs.selected.background.gradient) repeat scroll top center;
+  color: $(tabs.selected.text.color);
+}
+
+/* Headings
+----------------------------------------------- */
+h2 {
+  font: $(widget.title.font);
+  color: $(widget.title.text.color);
+}
+
+.main-inner h2.date-header {
+  font: $(date.font);
+  color: $(date.text.color);
+  text-align: center;
+}
+
+.main-inner h2.date-header:hover{
+  color: $(tabs.background.color);
+  text-decoration: none;
+}
+
+.main-inner h2.date-header::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f073";
+  padding: 5px;
+}
+
+.footer-inner .widget h2,
+.sidebar .widget h2 {
+  padding-bottom: .5em;
+}
+
+/* Main
+----------------------------------------------- */
+.main-inner {
+  padding: $(content.padding) 0;
+}
+
+.main-inner .column-center-inner {
+  background-color: transparent;
+}
+
+.main-inner .column-center-inner .section {
+  margin: 0 $(content.posts.padding);
+}
+
+.main-inner .column-right-inner {
+  margin-left: $(content.padding);
+}
+
+.main-inner .fauxcolumn-right-outer .fauxcolumn-inner {
+  margin-left: $(content.padding);
+  background: $(widget.outer.background.color) $(widget.outer.background.gradient) repeat scroll top left;
+}
+
+.main-inner .column-left-inner {
+  margin-right: $(content.padding);
+}
+
+.main-inner .fauxcolumn-left-outer .fauxcolumn-inner {
+  margin-right: $(content.padding);
+  background: $(widget.outer.background.color) $(widget.outer.background.gradient) repeat scroll top left;
+}
+
+.main-inner .column-left-inner,
+.main-inner .column-right-inner {
+  padding: 15px 0;
+  margin-top: -15px;
+}
+
+/* Posts
+----------------------------------------------- */
+h3.post-title {
+  text-align: center;
+  padding: 5px;
+}
+
+h3.post-title a {
+  font: $(post.title.font);
+  color: $(post.title.text.color);
+}
+
+h3.post-title a:hover {
+  text-decoration: none;
+}
+
+.post-outer {
+  padding: 0 5px 5px 5px;
+  margin: 0 2px 10px;
+  background-color: $(post.background.color);
+}
+
+.post-body {
+  line-height: 1.4;
+  position: relative;
+  text-align: justify;
+  padding: 7px;
+}
+
+.post-header {
+  margin: 0 0 1em;
+  line-height: 1.6;
+}
+
+.post-footer {
+  margin: .5em 0;
+  line-height: 1.6;
+}
+
+#blog-pager {
+  font-size: 140%;
+}
+
+#comments {
+  background: $(comments.background);
+  padding: 15px;
+}
+
+#comments .comment-author {
+  padding-top: 1.5em;
+}
+
+#comments h4,
+#comments .comment-author a,
+#comments .comment-timestamp a {
+  color: $(post.title.text.color);
+}
+
+#comments .comment-author:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.avatar-image-container {
+  margin: .2em 0 0;
+}
+
+/* Comments
+----------------------------------------------- */
+#comments a {
+  color: $(post.title.text.color);
+}
+
+.comments .comments-content .icon.blog-author {
+  background-repeat: no-repeat;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEgAACxIB0t1+/AAAAAd0SU1FB9sLFwMeCjjhcOMAAAD+SURBVDjLtZSvTgNBEIe/WRRnm3U8RC1neQdsm1zSBIU9VVF1FkUguQQsD9ITmD7ECZIJSE4OZo9stoVjC/zc7ky+zH9hXwVwDpTAWWLrgS3QAe8AZgaAJI5zYAmc8r0G4AHYHQKVwII8PZrZFsBFkeRCABYiMh9BRUhnSkPTNCtVXYXURi1FpBDgArj8QU1eVXUzfnjv7yP7kwu1mYrkWlU33vs1QNu2qU8pwN0UpKoqokjWwCztrMuBhEhmh8bD5UDqur75asbcX0BGUB9/HAMB+r32hznJgXy2v0sGLBcyAJ1EK3LFcbo1s91JeLwAbwGYu7TP/3ZGfnXYPgAVNngtqatUNgAAAABJRU5ErkJggg==);
+}
+
+.comments .comments-content .loadmore a {
+  border-top: 1px solid $(post.title.text.color);
+  border-bottom: 1px solid $(post.title.text.color);
+}
+
+.comments .comment-thread.inline-thread {
+  background: $(post.background.color);
+}
+
+.comments .continue {
+  border-top: 2px solid $(post.title.text.color);
+}
+
+
+/* Widgets
+----------------------------------------------- */
+.sidebar .widget {
+  padding: 3px;
+  margin: 25px 0;
+  text-align: justify;
+  background-color: $(widget.inner.background.color);
+}
+
+.sidebar .widget:first-child {
+  margin-top: 0;
+}
+
+.sidebar .widget:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.footer-inner .widget,
+.sidebar .widget {
+  font: $(widget.font);
+  color: $(widget.text.color);
+}
+
+
+.sidebar .widget a:link {
+  color: $(widget.link.color);
+  text-decoration: none;
+}
+
+.sidebar .widget a:visited {
+  color: $(widget.link.visited.color);
+}
+
+.sidebar .widget a:hover {
+  color: $(widget.alternate.text.color);
+  text-decoration: none;
+}
+
+.footer-inner .widget a:link {
+  color: $(link.color);
+  text-decoration: none;
+}
+
+.footer-inner .widget a:visited {
+  color: $(link.visited.color);
+}
+
+.footer-inner .widget a:hover {
+  color: $(link.color);
+  text-decoration: none;
+}
+
+.widget .zippy {
+  color: $(widget.alternate.text.color);
+}
+
+.footer-inner {
+  background: transparent $(footer.background.gradient) repeat scroll top center;
+}
+
+/* Mobile
+----------------------------------------------- */
+body.mobile  {
+  background-size: 100% auto;
+}
+
+body.mobile .AdSense {
+  margin: 0 -10px;
+}
+
+.mobile .body-fauxcolumn-outer {
+  background: $(mobile.background.overlay);
+}
+
+.mobile .footer-inner .widget a:link {
+  color: $(widget.link.color);
+  text-decoration: none;
+}
+
+.mobile .footer-inner .widget a:visited {
+  color: $(widget.link.visited.color);
+}
+
+.mobile-post-outer a {
+  color: $(post.title.text.color);
+}
+
+.mobile-link-button {
+  background-color: $(link.color);
+}
+
+.mobile-link-button a:link, .mobile-link-button a:visited {
+  color: $(mobile.button.color);
+}
+
+.mobile-index-contents {
+  color: $(body.text.color);
+}
+
+.mobile .tabs-inner .PageList .widget-content {
+  background: $(tabs.selected.background.color) $(tabs.selected.background.gradient) repeat scroll top center;
+  color: $(tabs.selected.text.color);
+}
+
+.mobile .tabs-inner .PageList .widget-content .pagelist-arrow {
+  border-$startSide: 1px solid $(tabs.selected.text.color);
+}
+
+#BlogArchive1_ArchiveMenu {
+  width: 100%;
+  background: #ffffff;
+  font: $(body.font);
+  color: #000000;
+  padding: 7px;
+}
+
+#HTML1 h2{
+  display: none;
+}
+
+.instafeed-widget {
+  float: left;
+  margin-left: 2%;
+  position: relative;
+  width: 17%;
+}
+
+.instafeed-widget:first-of-type {
+  margin: 0;
+}
+
+.instafeed-widget img {
+  display: block;
+  width: 100%;
+}
+
+.instafeed-widget a {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.instafeed-likes {
+  background: #ffffff;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  color: #ff0066;
+  font-size: 150%;
+  font-weight: normal;
+  letter-spacing: 2px;
+  justify-content: center;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -moz-opacity: 0;
+  -khtml-opacity: 0;
+}
+
+.instafeed-likes:hover,
+.instafeed-likes:focus {
+  opacity: .6;
+  filter: alpha(opacity=60);
+  -moz-opacity: .6;
+  -khtml-opacity: .6;
+}
+
+.status-msg-wrap {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 25px;
+  background-color: #000000;
+  color: #fff2fb;
+  font-size: 20px;
+  text-align: center;
+}
+
+::selection {
+  background-color: #ff0066;
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background: #ff0066;
+  color: #ffffff;
+}
+
+]]>
