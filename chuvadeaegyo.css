@@ -1,0 +1,15 @@
+#Label1 ul li {
+  list-style-type: none;
+  float:center;
+}
+
+#Label1 ul li::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f292";
+  color: $(widget.link.color);
+}
+
+#Label1 ul li::before:hover {
+  color: #000000;
+}
