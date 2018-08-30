@@ -11,48 +11,5 @@
 }
 
 #Label1 ul li::before:hover {
-  color: #000000;
-}
-
-/* Tabs
------------------------------------------------ */
-.fixatopo {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 9999;
-}
-
-.tabs-inner {
-  margin: 1em 0 0;
-  padding: 0;
-}
-
-.tabs-inner .section {
-  margin: 0;
-}
-
-.tabs-inner .widget ul {
-  padding: 0;
-  background: $(tabs.background.color) $(tabs.background.gradient) repeat scroll top center;
-}
-
-.tabs-inner .widget li {
-  border: none;
-}
-
-.tabs-inner .widget li a {
-  display: inline-block;
-  padding: 1em 1.5em;
-  color: $(tabs.text.color);
-  font: $(tabs.font);
-}
-
-.tabs-inner .widget li.selected a,
-.tabs-inner .widget li a:hover {
-  position: relative;
-  z-index: 1;
-  background: $(tabs.selected.background.color) $(tabs.selected.background.gradient) repeat scroll top center;
-  color: $(tabs.selected.text.color);
+  color: $(date.text.color);
 }
